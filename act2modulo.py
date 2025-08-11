@@ -1,4 +1,3 @@
-
 #Importar el módulo datetime.
 import datetime
 #Crear una variable llamada ahora y guardar la fecha actual utilizando la 
