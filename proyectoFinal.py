@@ -128,6 +128,12 @@ sucursales = {"Oeste": ["Merlo", "Castelar", "Ramos Mejía"],
 "Sur": ["Quilmes", "Lanús", "Avellaneda"],
 "Caba": ["Belgrano", "Palermo", "Recoleta"],
 }
+#Hola tobi
+# DATOS HORARIOS
+horarios = {"Lunes": ["10:00", "11:00", "15:00", "16:00"],
+"Martes": ["10:00", "11:00", "15:00", "16:00"],
+"Miércoles": ["10:00", "11:00", "15:00", "16:00"],
+"Jueves": ["10:00", "11:00", "15:00", "16:00"], }
 
 
 # --- FUNCIONES DEL CHATBOT ---
