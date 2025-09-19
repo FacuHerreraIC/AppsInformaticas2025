@@ -128,7 +128,7 @@ sucursales = {"Oeste": ["Merlo", "Castelar", "Ramos Mejía"],
 "Sur": ["Quilmes", "Lanús", "Avellaneda"],
 "Caba": ["Belgrano", "Palermo", "Recoleta"],
 }
-#Hola tobi
+
 # DATOS HORARIOS
 horarios = {"Lunes": ["10:00", "11:00", "15:00", "16:00"],
 "Martes": ["10:00", "11:00", "15:00", "16:00"],
@@ -141,10 +141,17 @@ horarios = {"Lunes": ["10:00", "11:00", "15:00", "16:00"],
 # FUNCIÓN PARA BUSCAR USUARIO POR DNI
 def buscarUsuarioPorDni(nroBuscado):
     print("\nBuscando usuario...")
+    for usuario in usuarios:
+        if usuario["Dni"] == nroBuscado:
+            print(f"\n¡Hola {usuario['Nombre']}! ¿En qué puedo ayudarte hoy?")
+            return usuario
+    print("\nNo se encontró un usuario con ese DNI.")
+
 
 # FUNCIÓN PARA CONSULTAR EL SALDO
 def consultarSaldo(usuario):
     print("\nConsultando Saldo...")
+    print(f"Tu saldo actual es: ${usuario['Saldo']}")
 
 # FUNCIÓN PARA CONSULTAR FACTURAS
 def consultarFacturas(usuario):
@@ -172,9 +179,10 @@ def sacarTurno():
 print("\n**¡Hola! Soy Telmo, tu asistente virtual**")
 
 # SOLICITAR DNI CON input() Y ALMACENARLO EN UNA VARIABLE
+dniIngresado = int(input("Por favor, ingrese su DNI (sin puntos): "))
 
 # BUSCAR USUARIO SEGÚN SU DNI Y ALMACENARLO EN UNA VARIABLE LLAMADA "usuarioActual"
-
+usuarioActual = buscarUsuarioPorDni(dniIngresado)
 # SALUDAR AL "usuarioActual" SEGÚN SU NOMBRE
 
 
