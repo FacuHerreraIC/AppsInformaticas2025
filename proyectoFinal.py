@@ -156,6 +156,9 @@ def consultarSaldo(usuario):
 # FUNCIÓN PARA CONSULTAR FACTURAS
 def consultarFacturas(usuario):
     print("\nConsultando Facturas...")
+    cont = 1
+    for factura in usuario['FacturasAdeudadas']:
+        print(f'{cont}. {factura['Servicio']} con vencimiento el: {factura['Vencimiento']} y monto: ${factura['Valor']}')
 
 # FUNCIÓN PARA PAGAR FACTURAS
 def pagarFacturas(usuario):
@@ -199,13 +202,20 @@ while continuar == "SI":
     4. Consultar sucursales
     5. Solicitar un turno
     >>>>>>>>>>>>: """)
+    match opcion:
+        case 1:
+            consultarSaldo(usuarioActual)
+        case 2:
+            consultarFacturas(usuarioActual)
+        case 3:
+            pagarFacturas(usuarioActual)
 
 # VERIFICAR QUE LA OPCIÓN INGRESADA SEA CORRECTA
 
 # USAR UN CONDICIONAL PARA EJECUTAR LA FUNCIÓN QUE CORRESPONDA SEGÚN LA ELECCIÓN
 
 # PREGUNTAR SI DESEA CONTINUAR
-continuar = "NO"
+    continuar = "NO"
 
 
 # CUANDO TERMINA EL BUCLE, SE MUESTRA UN MENSAJE DE DESPEDIDA
