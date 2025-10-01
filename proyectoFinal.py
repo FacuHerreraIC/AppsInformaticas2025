@@ -145,7 +145,12 @@ def buscarUsuarioPorDni(nroBuscado):
         if usuario["Dni"] == nroBuscado:
             print(f"\n¡Hola {usuario['Nombre']}! ¿En qué puedo ayudarte hoy?")
             return usuario
-    print("\nNo se encontró un usuario con ese DNI.")
+        else:
+            print("\nNo se encontró un usuario con ese DNI.")
+            return None
+            
+
+    
 
 
 # FUNCIÓN PARA CONSULTAR EL SALDO
@@ -159,7 +164,8 @@ def consultarFacturas(usuario):
     cont = 1
     for factura in usuario['FacturasAdeudadas']:
         print(f'{cont}. {factura['Servicio']} con vencimiento el: {factura['Vencimiento']} y monto: ${factura['Valor']}')
-
+        cont += 1
+        
 # FUNCIÓN PARA PAGAR FACTURAS
 def pagarFacturas(usuario):
     print("\nPagando Facturas...")
@@ -169,6 +175,26 @@ def pagarFacturas(usuario):
 # FUNCIÓN PARA CONSULTAR SUCURSALES
 def consultarSucursales():
     print("\nAccediendo a datos de sucursales...")
+    #Printeo sucursales de Caba
+    sucursal = sucursales['Caba']
+    print("Las sucursales en CABA son: ")
+    for local in sucursal:
+        print(f'La sucursal de {local}')
+    #Printeo sucursales de Oeste
+    sucursal = sucursales['Oeste']
+    print("Las sucursales en OESTE son: ")
+    for local in sucursal:
+        print(f'La sucursal de {local}')
+    #Printeo sucursales de Este
+    sucursal = sucursales['Este']
+    print("Las sucursales en ESTE son: ")
+    for local in sucursal:
+        print(f'La sucursal de {local}')
+    #Printeo sucursales de Sur
+    sucursal = sucursales['Sur']
+    print("Las sucursales en SUR son: ")
+    for local in sucursal:
+        print(f'La sucursal de {local}')
 
 # FUNCIÓN PARA SACAR TURNO
 def sacarTurno():
@@ -183,15 +209,15 @@ print("\n**¡Hola! Soy Telmo, tu asistente virtual**")
 
 # SOLICITAR DNI CON input() Y ALMACENARLO EN UNA VARIABLE
 dniIngresado = int(input("Por favor, ingrese su DNI (sin puntos): "))
-
 # BUSCAR USUARIO SEGÚN SU DNI Y ALMACENARLO EN UNA VARIABLE LLAMADA "usuarioActual"
 usuarioActual = buscarUsuarioPorDni(dniIngresado)
 # SALUDAR AL "usuarioActual" SEGÚN SU NOMBRE
-
-
+if usuarioActual == None:
+    continuar = "NO"
+else:
+    continuar = "SI"
 # BUCLE DEL CHATBOT - PERMITIR ELEGIR OPCIONES HASTA QUE DESEE TERMINAR
 
-continuar = "SI"
 while continuar == "SI":
     opcion = input("""
     Ingrese el número de opción que desea:
@@ -203,20 +229,25 @@ while continuar == "SI":
     5. Solicitar un turno
     >>>>>>>>>>>>: """)
     match opcion:
-        case 1:
+        case '1':
             consultarSaldo(usuarioActual)
-        case 2:
+        case '2':
             consultarFacturas(usuarioActual)
-        case 3:
+        case '3':
             pagarFacturas(usuarioActual)
+        case '4':
+            consultarSucursales()
+        case '5':
+            sacarTurno()
+        case _:
+            print("\nOpción no válida. Por favor, ingrese un número del 1 al 5.")
+    continuar = input("\n¿Desea realizar otra consulta? (SI/NO): ").upper()
+    if continuar == 'NO':
+        break
+    else:
+        continue
 
-# VERIFICAR QUE LA OPCIÓN INGRESADA SEA CORRECTA
-
-# USAR UN CONDICIONAL PARA EJECUTAR LA FUNCIÓN QUE CORRESPONDA SEGÚN LA ELECCIÓN
-
-# PREGUNTAR SI DESEA CONTINUAR
-    continuar = "NO"
-
+continuar = "NO"
 
 # CUANDO TERMINA EL BUCLE, SE MUESTRA UN MENSAJE DE DESPEDIDA
 print("\n**¡Gracias por utilizar el servicio de autogestión!**")
