@@ -147,7 +147,7 @@ def buscarUsuarioPorDni(nroBuscado):
             return usuario
         else:
             print("\nNo se encontró un usuario con ese DNI.")
-            return None
+
             
 
     
@@ -185,14 +185,14 @@ def consultarSucursales():
     print("Las sucursales en OESTE son: ")
     for local in sucursal:
         print(f'La sucursal de {local}')
-    #Printeo sucursales de Este
-    sucursal = sucursales['Este']
-    print("Las sucursales en ESTE son: ")
-    for local in sucursal:
-        print(f'La sucursal de {local}')
     #Printeo sucursales de Sur
     sucursal = sucursales['Sur']
     print("Las sucursales en SUR son: ")
+    for local in sucursal:
+        print(f'La sucursal de {local}')
+    #Printeo sucursales en Norte
+    sucursal = sucursales['Norte']
+    print("Las sucursales en Norte son: ")
     for local in sucursal:
         print(f'La sucursal de {local}')
 
@@ -212,10 +212,10 @@ dniIngresado = int(input("Por favor, ingrese su DNI (sin puntos): "))
 # BUSCAR USUARIO SEGÚN SU DNI Y ALMACENARLO EN UNA VARIABLE LLAMADA "usuarioActual"
 usuarioActual = buscarUsuarioPorDni(dniIngresado)
 # SALUDAR AL "usuarioActual" SEGÚN SU NOMBRE
-if usuarioActual == None:
-    continuar = "NO"
-else:
+if usuarioActual != None:
     continuar = "SI"
+else:
+    continuar = "NO"
 # BUCLE DEL CHATBOT - PERMITIR ELEGIR OPCIONES HASTA QUE DESEE TERMINAR
 
 while continuar == "SI":
