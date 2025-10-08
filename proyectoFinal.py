@@ -171,7 +171,9 @@ def pagarFacturas(usuario):
     print("\nPagando Facturas...")
 # LAS FACTURAS SOLO SE PAGAN SI TIENES SALDO SUFICIENTE
 # SI LAS FACTURAS SE PAGAN, SE BORRAN DEL DICCIONARIO
-
+    consultarFacturas(usuario)
+    factAPagar = int(input("Decime que factura queres abonar: (SOLO NUMERO) "))
+    if usuario['facturasAdeudadas'][factAPagar-1] 
 # FUNCIÓN PARA CONSULTAR SUCURSALES
 def consultarSucursales():
     print("\nAccediendo a datos de sucursales...")
